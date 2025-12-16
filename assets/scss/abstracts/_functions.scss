@@ -1,0 +1,77 @@
+// ==========================================================================
+// FUNCTIONS
+// ==========================================================================
+
+// REM CONVERSION
+// ==========================================================================
+
+@function rem($pixels, $context: 16) {
+  @return #{$pixels / $context}rem;
+}
+
+// STRIP UNITS
+// ==========================================================================
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// COLOR FUNCTIONS
+// ==========================================================================
+
+// Get color with opacity
+@function alpha-color($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+// Tint (lighten with white)
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// Shade (darken with black)
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// MAP DEEP GET
+// ==========================================================================
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+// SPACING MULTIPLIER
+// ==========================================================================
+
+@function spacing($multiplier) {
+  @return $spacing-md * $multiplier;
+}
+
+// Z-INDEX MANAGEMENT
+// ==========================================================================
+
+$z-layers: (
+  'base': 1,
+  'dropdown': 100,
+  'sticky': 200,
+  'fixed': 300,
+  'modal-backdrop': 400,
+  'modal': 500,
+  'popover': 600,
+  'tooltip': 700
+);
+
+@function z($layer) {
+  @if map-has-key($z-layers, $layer) {
+    @return map-get($z-layers, $layer);
+  }
+  @warn "Unknown z-index layer: `#{$layer}`.";
+  @return null;
+}

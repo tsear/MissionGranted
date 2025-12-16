@@ -1,0 +1,109 @@
+// ============================================
+// Contact Section
+// ============================================
+
+.contact-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background-color: $color-white;
+
+  &__container {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+
+    @include respond-to('lg') {
+      grid-template-columns: 1fr 1.5fr;
+    }
+  }
+
+  &__info {
+    @include respond-to('lg') {
+      padding-right: $spacing-2xl;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__methods {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+
+  &__method {
+    display: flex;
+    gap: $spacing-md;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  &__details {
+    h4 {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-text;
+      margin-bottom: $spacing-xs;
+    }
+
+    p {
+      font-size: $font-size-base;
+      color: $color-text-muted;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  &__form {
+    background-color: $color-light;
+    padding: $spacing-2xl;
+    border-radius: $border-radius-lg;
+  }
+}
+
+.contact-form {
+  &__field {
+    margin-bottom: $spacing-lg;
+
+    label {
+      display: block;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      color: $color-text;
+      margin-bottom: $spacing-sm;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: $spacing-md;
+      font-size: $font-size-base;
+      border: 1px solid $color-neutral-300;
+      border-radius: $border-radius;
+      transition: $transition-base;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+  }
+}

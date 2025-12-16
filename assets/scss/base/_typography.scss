@@ -1,0 +1,251 @@
+// ==========================================================================
+// TYPOGRAPHY
+// ==========================================================================
+
+// HEADINGS
+// ==========================================================================
+
+h1, h2, h3, h4, h5, h6 {
+  @include heading-base;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  
+  @include respond-below('md') {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-4xl;
+  
+  @include respond-below('md') {
+    font-size: $font-size-3xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-3xl;
+  
+  @include respond-below('md') {
+    font-size: $font-size-2xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-2xl;
+}
+
+h5 {
+  font-size: $font-size-xl;
+}
+
+h6 {
+  font-size: $font-size-lg;
+}
+
+// PARAGRAPHS
+// ==========================================================================
+
+p {
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// LINKS
+// ==========================================================================
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $color-primary-dark;
+  }
+  
+  @include focus-visible;
+}
+
+// LISTS
+// ==========================================================================
+
+ul, ol {
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// TEXT UTILITIES
+// ==========================================================================
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// FONT WEIGHTS
+// ==========================================================================
+
+.font-light {
+  font-weight: $font-weight-light;
+}
+
+.font-normal {
+  font-weight: $font-weight-normal;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+// FONT SIZES
+// ==========================================================================
+
+.text-xs {
+  font-size: $font-size-xs;
+}
+
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-base {
+  font-size: $font-size-base;
+}
+
+.text-lg {
+  font-size: $font-size-lg;
+}
+
+.text-xl {
+  font-size: $font-size-xl;
+}
+
+.text-2xl {
+  font-size: $font-size-2xl;
+}
+
+.text-3xl {
+  font-size: $font-size-3xl;
+}
+
+// COLORS
+// ==========================================================================
+
+.text-primary {
+  color: $color-primary;
+}
+
+.text-secondary {
+  color: $color-secondary;
+}
+
+.text-dark {
+  color: $color-dark;
+}
+
+.text-gray {
+  color: $color-gray;
+}
+
+.text-white {
+  color: $color-white;
+}
+
+// BLOCKQUOTE
+// ==========================================================================
+
+blockquote {
+  padding: $spacing-lg;
+  border-left: 4px solid $color-primary;
+  background-color: $color-light;
+  font-style: italic;
+  margin-bottom: $spacing-lg;
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+  
+  cite {
+    display: block;
+    margin-top: $spacing-sm;
+    font-size: $font-size-sm;
+    color: $color-gray;
+    font-style: normal;
+    
+    &::before {
+      content: '— ';
+    }
+  }
+}
+
+// CODE
+// ==========================================================================
+
+code {
+  font-family: $font-mono;
+  font-size: 0.875em;
+  background-color: $color-light;
+  padding: 0.2em 0.4em;
+  border-radius: $border-radius-sm;
+  color: $color-error;
+}
+
+pre {
+  background-color: $color-dark;
+  color: $color-light;
+  padding: $spacing-lg;
+  border-radius: $border-radius;
+  overflow-x: auto;
+  margin-bottom: $spacing-lg;
+  
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// HORIZONTAL RULE
+// ==========================================================================
+
+hr {
+  border: none;
+  border-top: $border-width solid $color-gray-light;
+  margin: $spacing-2xl 0;
+}

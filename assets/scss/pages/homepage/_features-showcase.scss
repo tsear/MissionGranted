@@ -1,0 +1,67 @@
+// ============================================
+// Features Showcase Section
+// ============================================
+
+.features-showcase-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  background-color: $color-white;
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4rem, 8vw, 6rem);
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+    align-items: center;
+
+    @include respond-to('lg') {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &--reverse {
+      @include respond-to('lg') {
+        .features-showcase-section__content {
+          order: 2;
+        }
+        .features-showcase-section__visual {
+          order: 1;
+        }
+      }
+    }
+  }
+
+  &__content {
+    max-width: 540px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    margin-bottom: $spacing-lg;
+    line-height: 1.2;
+  }
+
+  &__desc {
+    font-size: $font-size-lg;
+    color: $color-text-muted;
+    line-height: 1.7;
+  }
+
+  &__visual {
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-lg;
+    }
+  }
+}

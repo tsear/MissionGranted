@@ -1,0 +1,61 @@
+// ==========================================================================
+// MAIN SCSS FILE
+// Mission Granted WordPress Theme
+// ==========================================================================
+
+// 1. ABSTRACTS
+// Configuration and helpers
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+// 2. VENDORS
+// Third-party libraries
+// @import 'vendors/normalize';
+
+// 3. BASE
+// Standard HTML element styles
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/utilities';
+
+// 4. COMPONENTS
+// Reusable UI components
+@import 'components/buttons';
+
+// 5. LAYOUT
+// Major layout components
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/navigation';
+@import 'layout/grid';
+@import 'layout/containers';
+
+// 6. PAGES
+// Page-specific styles organized by page
+@import 'pages/page-hero';
+
+// Homepage
+@import 'pages/homepage/hero';
+@import 'pages/homepage/stats';
+@import 'pages/homepage/features-grid';
+@import 'pages/homepage/features-showcase';
+@import 'pages/homepage/testimonials';
+@import 'pages/homepage/cta-banner';
+
+// Solutions
+@import 'pages/solutions/solutions-showcase';
+@import 'pages/solutions/solutions-grid';
+
+// About
+@import 'pages/about/team';
+
+// Contact
+@import 'pages/contact/contact';
+
+// Pricing
+@import 'pages/pricing/pricing-cards';
+
+// 8. THEMES
+// Theme variations (if needed)
+@import 'themes/default';

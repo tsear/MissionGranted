@@ -1,0 +1,132 @@
+// ==========================================================================
+// CONTAINERS
+// ==========================================================================
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+  
+  @include respond-to('lg') {
+    padding-left: $container-padding-lg;
+    padding-right: $container-padding-lg;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  
+  @include respond-to('lg') {
+    padding-left: $container-padding-lg;
+    padding-right: $container-padding-lg;
+  }
+}
+
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+// SECTIONS
+// ==========================================================================
+
+.section {
+  padding: $spacing-3xl 0;
+  
+  @include respond-to('lg') {
+    padding: $spacing-4xl 0;
+  }
+}
+
+.section-sm {
+  padding: $spacing-2xl 0;
+  
+  @include respond-to('lg') {
+    padding: $spacing-3xl 0;
+  }
+}
+
+.section-lg {
+  padding: $spacing-4xl 0;
+  
+  @include respond-to('lg') {
+    padding: $spacing-5xl 0;
+  }
+}
+
+.section-light {
+  background-color: $color-light;
+}
+
+.section-dark {
+  background-color: $color-dark;
+  color: $color-white;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-white;
+  }
+}
+
+.section-primary {
+  @include gradient-primary;
+  color: $color-white;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-white;
+  }
+}
+
+// CONTENT WRAPPERS
+// ==========================================================================
+
+.content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content-area {
+  margin-bottom: $spacing-3xl;
+}
+
+// PAGE STRUCTURE
+// ==========================================================================
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-main {
+  flex: 1;
+}
+
+// SKIP LINK
+// ==========================================================================
+
+.skip-link {
+  @include sr-only;
+  
+  &:focus {
+    position: fixed;
+    top: $spacing-md;
+    left: $spacing-md;
+    z-index: z('modal');
+    background-color: $color-primary;
+    color: $color-white;
+    padding: $spacing-md $spacing-lg;
+    border-radius: $border-radius;
+    text-decoration: none;
+    box-shadow: $shadow-xl;
+    width: auto;
+    height: auto;
+    clip: auto;
+    margin: 0;
+  }
+}

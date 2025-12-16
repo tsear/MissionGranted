@@ -1,0 +1,119 @@
+// ==========================================================================
+// HEADER
+// ==========================================================================
+
+.site-header {
+  background-color: $color-white;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: z('sticky');
+  transition: all $transition-base;
+  
+  .container {
+    @include flex-between;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-md;
+  }
+  
+  &.scrolled {
+    box-shadow: $shadow-md;
+  }
+  
+  &.header-hidden {
+    transform: translateY(-100%);
+  }
+}
+
+// LOGO
+// ==========================================================================
+
+.site-logo {
+  img {
+    max-height: 50px;
+    width: auto;
+  }
+  
+  a {
+    display: block;
+    
+    &:focus-visible {
+      outline-offset: 4px;
+    }
+  }
+}
+
+.site-title {
+  font-size: $font-size-2xl;
+  margin-bottom: 0;
+  color: $color-primary;
+}
+
+// HEADER CTA
+// ==========================================================================
+
+.header-cta {
+  margin-left: $spacing-xl;
+  
+  @include respond-below('md') {
+    display: none;
+  }
+}
+
+// MOBILE MENU TOGGLE
+// ==========================================================================
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: $spacing-sm;
+  cursor: pointer;
+  z-index: z('sticky') + 10;
+  
+  @include respond-below('md') {
+    display: block;
+  }
+  
+  @include focus-visible;
+}
+
+.hamburger {
+  @include flex-column;
+  gap: 5px;
+  
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: $color-dark;
+    transition: all $transition-base;
+  }
+}
+
+.mobile-menu-toggle[aria-expanded="true"] {
+  .hamburger {
+    span:first-child {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    span:last-child {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
+}
+
+// BODY LOCK FOR MOBILE MENU
+// ==========================================================================
+
+body.menu-open {
+  overflow: hidden;
+  
+  @include respond-to('md') {
+    overflow: auto;
+  }
+}
