@@ -1,95 +1,210 @@
-Mission Granted WordPress Theme
-================================
+# MissionGranted WordPress Theme
 
-A modern, professional WordPress theme designed specifically for the Mission Granted SaaS platform - the all-in-one solution for nonprofits to find, apply for, and manage grants.
+Modern WordPress theme for MissionGranted - powering grant-funded finances with React components and WebGL animations.
 
-## Features
+## 🎨 Features
 
-- **Modern Design**: Clean, professional design optimized for SaaS products
-- **Fully Responsive**: Works perfectly on all devices and screen sizes
-- **Custom Post Types**: Built-in support for Testimonials, Team Members, and Case Studies
-- **Page Templates**: Pre-built templates for Home, Features, Pricing, About, and Contact pages
-- **Customizable**: Easy color and branding customization through WordPress Customizer
-- **SEO Optimized**: Built with SEO best practices
-- **Performance**: Lightweight and fast-loading
-- **Accessibility**: WCAG 2.1 AA compliant
+### React Integration
+- **CardNav Component**: Animated navigation with GSAP-powered dropdown cards
+- **Aurora Background**: WebGL shader-based animated gradient using OGL library
+- Full React 18 with modern hooks (useState, useRef, useEffect)
 
-## Installation
+### Design
+- **Aurora Gradient**: Animated WebGL background with brand colors (pink, yellow, blue)
+- **Glassmorphic Hero**: Transparent card with backdrop blur effects
+- **3D Buttons**: Layered shadows with transform animations
+- **Fixed Navigation**: Sticky nav bar at top of viewport
 
-1. Download the theme files
-2. Upload the `MissionGranted26` folder to `/wp-content/themes/`
-3. Activate the theme through the WordPress admin panel
-4. Configure theme settings in Appearance > Customize
+### Build System
+- **Rollup**: JavaScript bundler with React/JSX support
+- **Sass**: 7-1 architecture with compressed output
+- **Babel**: JSX transformation with automatic runtime
+- **PostCSS**: CSS injection into bundle
 
-## Page Templates
+## 🚀 Quick Start
 
-The theme includes the following page templates:
+### Prerequisites
+- Node.js 16+
+- WordPress 6.0+
+- npm or yarn
 
-- **Home Page** (`template-home.php`): Hero section, features grid, testimonials, and CTA
-- **Features Page** (`template-features.php`): Detailed feature descriptions with icons
-- **Pricing Page** (`template-pricing.php`): Pricing tiers with feature comparison
-- **About Page** (`template-about.php`): Company story, team members, and values
-- **Contact Page** (`template-contact.php`): Contact information and form
+### Installation
 
-To use a template:
-1. Create a new page in WordPress
-2. Select the desired template from the "Page Attributes" panel
-3. Add your content and publish
+```bash
+# Clone repository
+git clone https://github.com/tsear/MissionGranted.git
+cd MissionGranted
 
-## Custom Post Types
+# Install dependencies
+npm install
 
-### Testimonials
-Add client testimonials with author information, company, and ratings.
+# Build assets
+npm run build
 
-### Team Members
-Showcase your team with photos, positions, and social links.
+# Development
+npm run build:css  # Compile Sass
+npm run build:js   # Bundle React components
+```
 
-### Case Studies
-Share success stories with client information and results.
+### WordPress Setup
+1. Upload theme to `/wp-content/themes/MissionGranted/`
+2. Activate theme in WordPress admin
+3. Theme auto-enqueues compiled bundles
 
-## Customization
+## 📦 Dependencies
 
-### Theme Customizer Options
-Access via Appearance > Customize > Mission Granted SaaS Settings:
+### Production
+- `gsap` - Animation library for CardNav
+- `ogl` - WebGL library for Aurora shader
+- `react` + `react-dom` - UI library
+- `react-icons` - Icon components (GoArrowUpRight)
 
-- **Primary Color**: Change the main brand color
-- **CTA Button Text**: Customize call-to-action button text
-- **CTA Button URL**: Set the call-to-action destination
+### Development
+- `rollup` - JavaScript bundler
+- `@rollup/plugin-babel` - JSX transformation
+- `rollup-plugin-postcss` - CSS bundling
+- `sass` - CSS preprocessor
+- `@babel/preset-react` - React JSX support
 
-### Menus
-Register your menus at Appearance > Menus:
-- Primary Menu (header navigation)
-- Footer Menu (footer links)
+## 🎯 Key Components
 
-### Widgets
-Add widgets to these areas:
-- Sidebar
-- Footer Widget Area 1-4
+### CardNav (`assets/js/components/CardNav.jsx`)
+Animated navigation with dropdown cards:
+- 4 navigation items: Home, Solutions, Resources, Contact
+- GSAP timeline animations for smooth expand/collapse
+- Responsive hamburger menu
+- Dynamic height calculation
+- Logo: `MissionGranted small.png` (50px height)
 
-## Requirements
+**Configuration** (`initCardNav.js`):
+```javascript
+{
+  label: "Home",
+  href: "/",
+  bgColor: "#016BA6",
+  textColor: "#fff",
+  links: [
+    { text: "Customers", url: "/customers" },
+    { text: "About MissionGranted", url: "/about" },
+    { text: "About Smart Grant Solutions", url: "https://smartgrantsolutions.com/" }
+  ]
+}
+```
 
-- WordPress 6.0 or higher
-- PHP 7.4 or higher
-- Modern web browser
+### Aurora (`assets/js/components/Aurora.jsx`)
+WebGL shader background with animated gradient:
+- Custom fragment shader with simplex noise
+- 3 color stops: `#d81259`, `#FFBC41`, `#016BA6`
+- Configurable amplitude (0.5), blend (1.0), speed (0.3)
+- Opacity: 0.65 for subtle effect
+- OGL renderer with transparency and blending
 
-## Recommended Plugins
+**Shader features:**
+- Perlin noise wave animation
+- Color ramp interpolation
+- Smooth alpha blending
+- Responsive canvas sizing
 
-- **Contact Form 7** or **WPForms**: For contact forms
-- **Yoast SEO**: For search engine optimization
-- **WP Rocket**: For caching and performance
-- **Akismet**: For spam protection
+## 🎨 Styling
 
-## Support
+### Color Variables
+```scss
+$color-primary: #0066CC;           // Primary blue
+$color-brand-pink: #d81259;        // SGS Brand Pink
+$color-brand-yellow: #FFBC41;      // SGS Brand Yellow
+$color-brand-blue: #016BA6;        // SGS Brand Blue
+```
 
-For support and questions, please contact:
-- Email: support@smartgrantsolutions.com
-- Website: https://smartgrantsolutions.com
+### Hero Section
+- Transparent background with Aurora underneath
+- Glassmorphic card: `rgba(255, 255, 255, 0.15)` with `backdrop-filter: blur(10px)`
+- Primary blue text color
+- Responsive title: `clamp(1.75rem, 4.5vw, 3rem)`
+- Forced line break: "Grant-Funded Finances," / "Simplified."
 
-## Credits
+### Buttons
+- Transparent with primary blue border and text
+- Hover: Fill with blue background, white text
+- 3D shadow effects with transform animations
+- No text-shadow for clean appearance
 
-- Developed by Smart Grant Solutions
-- Fonts: Inter and Poppins (Google Fonts)
-- Icons: Emoji icons for cross-platform compatibility
+## 📁 Project Structure
+
+```
+MissionGranted/
+├── assets/
+│   ├── images/          # Logo and images
+│   ├── js/
+│   │   ├── components/  # React components
+│   │   │   ├── Aurora.jsx
+│   │   │   ├── Aurora.css
+│   │   │   ├── CardNav.jsx
+│   │   │   ├── CardNav.css
+│   │   │   ├── initAurora.js
+│   │   │   └── initCardNav.js
+│   │   ├── main.js      # Entry point
+│   │   └── bundle.min.js # Built output
+│   └── scss/
+│       ├── abstracts/   # Variables, mixins, functions
+│       ├── base/        # Reset, typography, utilities
+│       ├── components/  # Buttons, etc.
+│       ├── layout/      # Header, footer, grid
+│       ├── pages/       # Page-specific styles
+│       └── main.scss    # Main orchestration
+├── template-parts/      # PHP template partials
+├── functions.php        # Theme setup and enqueues
+├── header.php          # Contains #card-nav-root mount
+├── rollup.config.js    # React bundler config
+└── package.json        # Dependencies
+```
+
+## 🛠️ Development
+
+### Build Commands
+```bash
+npm run build        # Build both CSS and JS
+npm run build:css    # Sass only
+npm run build:js     # Rollup only
+```
+
+### File Watching
+For active development, run builds in separate terminals:
+```bash
+# Terminal 1 - Watch Sass
+npm run build:css -- --watch
+
+# Terminal 2 - Watch Rollup  
+npm run build:js -- --watch
+```
+
+### Adding Components
+1. Create component in `assets/js/components/`
+2. Create initialization file (e.g., `initComponent.js`)
+3. Import and call in `main.js`
+4. Add mount point in PHP template
+5. Build with `npm run build`
+
+## 📄 Page Templates
+
+- `template-home.php` - Homepage with hero + Aurora
+- `template-solutions.php` - Solutions showcase (renamed from Features)
+- `template-pricing.php` - Pricing tiers
+- `template-about.php` - About/team page
+- `template-contact.php` - Contact form
+
+## 🤝 Contributing
+
+This is a proprietary theme for MissionGranted/Smart Grant Solutions.
+
+## 📧 Contact
+
+- **Email**: support@smartgrantsolutions.com
+- **Website**: https://smartgrantsolutions.com
+- **GitHub**: https://github.com/tsear/MissionGranted
+
+## 📝 License
+
+Proprietary - All rights reserved by Smart Grant Solutions
 
 ## License
 
