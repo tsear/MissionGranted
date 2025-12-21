@@ -1,0 +1,35 @@
+.product-video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.product-video-wrapper {
+  position: relative;
+  width: 300%;
+  max-width: none;
+  margin-right: -80%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+              0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.product-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .product-video-wrapper {
+    width: 100%;
+    margin-right: 0;
+  }
+}

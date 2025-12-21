@@ -1,0 +1,135 @@
+.testimonial-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #ffffff;
+  padding: 3rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .testimonial-section {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.testimonial-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  background: radial-gradient(45rem 50rem at top, rgba(99, 102, 241, 0.5), transparent);
+  opacity: 0.05;
+}
+
+.testimonial-skew {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 50%;
+  z-index: -10;
+  margin-right: 4rem;
+  width: 200%;
+  transform-origin: bottom left;
+  transform: skewX(-30deg);
+  background-color: #f9fafb;
+  box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.05);
+  ring: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 640px) {
+  .testimonial-skew {
+    margin-right: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonial-skew {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .testimonial-skew {
+    margin-right: 4rem;
+    transform-origin: center;
+  }
+}
+
+.testimonial-container {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .testimonial-container {
+    max-width: 64rem;
+  }
+}
+
+.testimonial-logo {
+  margin: 0 auto;
+  height: 3rem;
+}
+
+.testimonial-figure {
+  margin-top: 2.5rem;
+}
+
+.testimonial-quote {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+@media (min-width: 640px) {
+  .testimonial-quote {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+}
+
+.testimonial-quote p {
+  margin: 0;
+}
+
+.testimonial-caption {
+  margin-top: 2.5rem;
+}
+
+.testimonial-avatar {
+  margin: 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+}
+
+.testimonial-author {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.testimonial-author-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.testimonial-dot {
+  fill: #9ca3af;
+}
+
+.testimonial-author__title {
+  color: #6b7280;
+}

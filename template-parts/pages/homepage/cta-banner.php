@@ -8,7 +8,7 @@
                 <?php echo esc_html(get_theme_mod('cta_banner_subtitle', 'Join hundreds of nonprofits already using Mission Granted to secure more funding.')); ?>
             </p>
             <div class="cta-banner-section__actions">
-                <a href="<?php echo esc_url(get_theme_mod('cta_banner_url', '#signup')); ?>" class="btn btn--primary btn--lg">
+                <a href="<?php echo esc_url(get_theme_mod('cta_banner_url', '#signup')); ?>" class="btn btn--outline btn--lg">
                     <?php echo esc_html(get_theme_mod('cta_banner_text', 'Get Started Free')); ?>
                 </a>
             </div>

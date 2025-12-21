@@ -18,9 +18,7 @@
             </div>
         </div>
         <div class="hero-section__visual">
-            <?php if (get_theme_mod('hero_image')) : ?>
-                <img src="<?php echo esc_url(get_theme_mod('hero_image')); ?>" alt="<?php echo esc_attr(get_theme_mod('hero_title')); ?>">
-            <?php endif; ?>
+            <div id="product-video-root"></div>
         </div>
     </div>
 </section>

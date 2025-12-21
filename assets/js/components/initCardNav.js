@@ -21,41 +21,41 @@ export function initCardNav() {
             {
                 label: "Home",
                 href: "/",
-                bgColor: "#0D0716",
-                textColor: "#fff",
+                bgColor: "#fff",
+                textColor: "#000",
                 links: [
-                    { label: "Customers", href: "/", ariaLabel: "Our Customers" },
-                    { label: "About MissionGranted", href: "/about", ariaLabel: "About MissionGranted" },
+                    { label: "Customers", href: "/customers", ariaLabel: "Our Customers" },
+                    { label: "About MissionGranted", href: "/about-missiongranted", ariaLabel: "About MissionGranted" },
                     { label: "About Smart Grant Solutions", href: "https://smartgrantsolutions.com/", ariaLabel: "About Smart Grant Solutions" }
                 ]
             },
             {
                 label: "Solutions",
                 href: "/solutions",
-                bgColor: "#170D27",
-                textColor: "#fff",
+                bgColor: "#fff",
+                textColor: "#000",
                 links: [
-                    { label: "For Nonprofits", href: "/solutions", ariaLabel: "Solutions for Nonprofits" },
-                    { label: "For Funders", href: "/solutions", ariaLabel: "Solutions for Funders" },
-                    { label: "For Government", href: "/solutions", ariaLabel: "Solutions for Government" }
+                    { label: "For Nonprofits", href: "/for-nonprofits", ariaLabel: "Solutions for Nonprofits" },
+                    { label: "For Local Government", href: "/for-local-government", ariaLabel: "Solutions for Local Government" },
+                    { label: "For Funders", href: "/for-funders", ariaLabel: "Solutions for Funders" }
                 ]
             },
             {
                 label: "Resources",
                 href: "/resources",
-                bgColor: "#1E1137", 
-                textColor: "#fff",
+                bgColor: "#fff", 
+                textColor: "#000",
                 links: [
-                    { label: "Find Partners", href: "/resources", ariaLabel: "Find Partners" },
-                    { label: "Pricing and Billing", href: "/pricing", ariaLabel: "Pricing and Billing" },
-                    { label: "Support", href: "/contact", ariaLabel: "Support" }
+                    { label: "Find Partners", href: "/find-partners", ariaLabel: "Find Partners" },
+                    { label: "Pricing & Billing", href: "/pricing-billing", ariaLabel: "Pricing and Billing" },
+                    { label: "Support", href: "/support", ariaLabel: "Support" }
                 ]
             },
             {
                 label: "Contact",
                 href: "/contact",
-                bgColor: "#271E37", 
-                textColor: "#fff",
+                bgColor: "#fff", 
+                textColor: "#000",
                 links: [
                     { label: "Get in Touch", href: "/contact", ariaLabel: "Contact us" },
                     { label: "Sign In", href: "/wp-login.php", ariaLabel: "Sign In" }
@@ -70,7 +70,7 @@ export function initCardNav() {
                 items={items}
                 baseColor="#fff"
                 menuColor="#000"
-                buttonBgColor="#111"
+                buttonBgColor="#4169E1"
                 buttonTextColor="#fff"
                 ease="power3.out"
             />

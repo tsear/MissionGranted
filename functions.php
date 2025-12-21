@@ -125,7 +125,7 @@ function missiongranted_scripts() {
     $js_file = file_exists(get_template_directory() . '/assets/js/bundle.min.js') 
         ? '/assets/js/bundle.min.js' 
         : '/assets/js/main.js';
-    wp_enqueue_script('missiongranted-main', get_template_directory_uri() . $js_file, array('jquery'), MISSIONGRANTED_VERSION, true);
+    wp_enqueue_script('missiongranted-main', get_template_directory_uri() . $js_file, array('jquery'), MISSIONGRANTED_VERSION . '.' . filemtime(get_template_directory() . $js_file), true);
     
     // Comment reply script
     if (is_singular() && comments_open() && get_option('thread_comments')) {

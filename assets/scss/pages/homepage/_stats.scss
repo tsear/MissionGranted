@@ -3,8 +3,12 @@
 // ============================================
 
 .stats-section {
-  padding: $spacing-3xl 0;
+  padding: $spacing-sm 0 $spacing-lg 0;
   background-color: $color-light;
+  margin-top: -50px;
+  display: flex;
+  align-items: center;
+  min-height: 200px;
 
   &__container {
     @include container;

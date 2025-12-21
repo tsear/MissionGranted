@@ -1,0 +1,114 @@
+.features-grid-react {
+  background-color: white;
+  padding: 4rem 0 3rem;
+}
+
+.features-grid-react__container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.features-grid-react__header {
+  max-width: 42rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.features-grid-react__subtitle {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #0066CC;
+}
+
+.features-grid-react__title {
+  margin-top: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
+  line-height: 1.2;
+}
+
+@media (min-width: 640px) {
+  .features-grid-react__title {
+    font-size: 3rem;
+  }
+}
+
+.features-grid-react__description {
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  color: #374151;
+}
+
+.features-grid-react__grid {
+  margin: 0 auto;
+  margin-top: 2rem;
+  max-width: 42rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 2rem;
+}
+
+@media (min-width: 640px) {
+  .features-grid-react__grid {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .features-grid-react__grid {
+    margin-top: 3rem;
+    max-width: none;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+  }
+}
+
+.features-grid-react__item {
+  position: relative;
+  padding-left: 4rem;
+}
+
+.features-grid-react__item-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.features-grid-react__icon-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: #0066CC;
+}
+
+.features-grid-react__icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: white;
+}
+
+.features-grid-react__item-title {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.features-grid-react__item-description {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: #4b5563;
+}
