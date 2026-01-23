@@ -1,6 +1,56 @@
 # Build Pipeline Documentation
 
-## 🛠️ Build Tools
+## � Quick Start for Team Members
+
+### First-Time Setup
+
+1. **Install Node.js** (if not already installed):
+
+   **macOS:**
+   ```bash
+   brew install node
+   ```
+
+   **Windows (PowerShell):**
+   ```powershell
+   winget install OpenJS.NodeJS.LTS
+   ```
+
+   **Linux (Ubuntu/Debian):**
+   ```bash
+   curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -bash -
+   sudo apt-get install -y nodejs
+   ```
+
+2. **Clone the repository and set up the theme:**
+   ```bash
+   # Navigate to theme directory
+   cd path/to/MissionGranted
+   
+   # Install dependencies
+   npm install
+   
+   # Build theme assets
+   npm run build
+   
+   # Set up git hooks (automates future builds)
+   git config core.hooksPath .githooks
+   chmod +x .githooks/post-merge
+   ```
+
+### Updating the Theme
+
+Once git hooks are configured, simply run:
+
+```bash
+git pull
+```
+
+The post-merge hook will automatically:
+- Install/update dependencies (`npm install`)
+- Rebuild theme assets (`npm run build`)
+
+## �🛠️ Build Tools
 
 The Mission Granted theme uses a modern build pipeline with:
 

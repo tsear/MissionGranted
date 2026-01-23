@@ -1,0 +1,12 @@
+#!/bin/sh
+# Post-merge hook - runs after 'git pull'
+# Automatically installs dependencies and rebuilds assets
+
+echo "🔄 Running post-merge hook..."
+echo "📦 Installing/updating dependencies..."
+npm install
+
+echo "🏗️  Building theme assets..."
+npm run build
+
+echo "✅ Theme is ready to use!"
