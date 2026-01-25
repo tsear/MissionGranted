@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks && chmod +x .githooks/post-merge || true",
     "dev": "vite",
     "build": "npm run build:css && npm run build:js",
     "build:css": "sass assets/scss/main.scss:style.css --style compressed --no-source-map",
