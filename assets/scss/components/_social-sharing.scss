@@ -1,0 +1,196 @@
+// ============================================================================
+// SOCIAL SHARING BUTTONS
+// ============================================================================
+
+.social-sharing {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  margin: 2rem 0;
+  
+  &__label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+  }
+  
+  &__buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1.125rem;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+    
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    
+    // Platform-specific colors
+    &--twitter {
+      background: #1DA1F2;
+      color: white;
+      
+      &:hover {
+        background: #1a91da;
+      }
+    }
+    
+    &--facebook {
+      background: #1877F2;
+      color: white;
+      
+      &:hover {
+        background: #166fe5;
+      }
+    }
+    
+    &--linkedin {
+      background: #0A66C2;
+      color: white;
+      
+      &:hover {
+        background: #095ba8;
+      }
+    }
+    
+    &--email {
+      background: #6b7280;
+      color: white;
+      
+      &:hover {
+        background: #4b5563;
+      }
+    }
+    
+    &--copy {
+      background: #10b981;
+      color: white;
+      
+      &:hover {
+        background: #059669;
+      }
+      
+      &.copied {
+        background: #059669;
+        
+        &::after {
+          content: '✓';
+          position: absolute;
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+  
+  // Compact variation
+  &--compact {
+    padding: 1rem 0;
+    margin: 1rem 0;
+    
+    .social-sharing__label {
+      font-size: 0.8125rem;
+    }
+    
+    .social-sharing__button {
+      width: 36px;
+      height: 36px;
+      
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+  
+  // Sticky variation (floats on side of page)
+  &--sticky {
+    position: fixed;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e5e5;
+    z-index: 100;
+    
+    .social-sharing__label {
+      writing-mode: vertical-rl;
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .social-sharing__buttons {
+      flex-direction: column;
+    }
+    
+    @media (max-width: 1280px) {
+      display: none;
+    }
+  }
+}
+
+// Success message for copy link
+.copy-success {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #10b981;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  animation: slideInUp 0.3s ease;
+  z-index: 10000;
+  
+  &.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

@@ -430,6 +430,126 @@ function missiongranted_customizer_css() {
 add_action('wp_head', 'missiongranted_customizer_css');
 
 /**
+ * Social Media Meta Tags (Open Graph & Twitter Cards)
+ * Note: These serve as fallbacks if RankMath is not active
+ */
+function missiongranted_social_meta_tags() {
+    // Get page data
+    $title = get_the_title();
+    $description = get_the_excerpt();
+    $url = get_permalink();
+    $site_name = get_bloginfo('name');
+    $image = '';
+    
+    // Use featured image if available
+    if (has_post_thumbnail()) {
+        $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    } else {
+        // Fallback to site logo or default
+        $custom_logo_id = get_theme_mod('custom_logo');
+        if ($custom_logo_id) {
+            $image = wp_get_attachment_image_url($custom_logo_id, 'full');
+        }
+    }
+    
+    // Homepage overrides
+    if (is_front_page()) {
+        $title = $site_name . ' - ' . get_bloginfo('description');
+        $description = get_bloginfo('description');
+        $url = home_url('/');
+    }
+    
+    // Archive pages
+    if (is_archive()) {
+        $title = get_the_archive_title() . ' - ' . $site_name;
+        $description = get_the_archive_description();
+    }
+    
+    // Search results
+    if (is_search()) {
+        $title = 'Search Results for "' . get_search_query() . '" - ' . $site_name;
+        $description = 'Search results for ' . get_search_query();
+    }
+    
+    // 404 page
+    if (is_404()) {
+        $title = 'Page Not Found - ' . $site_name;
+        $description = 'The page you are looking for could not be found.';
+        $url = home_url('/404');
+    }
+    
+    // Sanitize
+    $title = esc_attr(wp_strip_all_tags($title));
+    $description = esc_attr(wp_strip_all_tags($description));
+    $url = esc_url($url);
+    $image = esc_url($image);
+    
+    ?>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="<?php echo is_single() ? 'article' : 'website'; ?>">
+    <meta property="og:title" content="<?php echo $title; ?>">
+    <meta property="og:description" content="<?php echo $description; ?>">
+    <meta property="og:url" content="<?php echo $url; ?>">
+    <meta property="og:site_name" content="<?php echo esc_attr($site_name); ?>">
+    <?php if ($image) : ?>
+    <meta property="og:image" content="<?php echo $image; ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="<?php echo $title; ?>">
+    <?php endif; ?>
+    <meta property="og:locale" content="<?php echo get_locale(); ?>">
+    
+    <?php if (is_single()) : ?>
+    <meta property="article:published_time" content="<?php echo get_the_date('c'); ?>">
+    <meta property="article:modified_time" content="<?php echo get_the_modified_date('c'); ?>">
+    <meta property="article:author" content="<?php echo esc_attr(get_the_author()); ?>">
+    <?php endif; ?>
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo $title; ?>">
+    <meta name="twitter:description" content="<?php echo $description; ?>">
+    <?php if ($image) : ?>
+    <meta name="twitter:image" content="<?php echo $image; ?>">
+    <meta name="twitter:image:alt" content="<?php echo $title; ?>">
+    <?php endif; ?>
+    
+    <?php
+    // Add Twitter handle if set in Customizer
+    $twitter_handle = get_theme_mod('missiongranted_twitter_handle');
+    if ($twitter_handle) :
+    ?>
+    <meta name="twitter:site" content="@<?php echo esc_attr(ltrim($twitter_handle, '@')); ?>">
+    <meta name="twitter:creator" content="@<?php echo esc_attr(ltrim($twitter_handle, '@')); ?>">
+    <?php endif; ?>
+    
+    <!-- Additional Meta Tags -->
+    <meta name="description" content="<?php echo $description; ?>">
+    <link rel="canonical" href="<?php echo $url; ?>">
+    
+    <?php
+}
+
+/**
+ * Add Twitter handle to Customizer
+ */
+add_action('customize_register', 'missiongranted_social_customizer');
+function missiongranted_social_customizer($wp_customize) {
+    // Add to existing SaaS Settings section
+    $wp_customize->add_setting('missiongranted_twitter_handle', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    
+    $wp_customize->add_control('missiongranted_twitter_handle', array(
+        'label'       => esc_html__('Twitter Handle', 'missiongranted'),
+        'description' => esc_html__('Enter your Twitter username (without @)', 'missiongranted'),
+        'section'     => 'missiongranted_saas_settings',
+        'type'        => 'text',
+    ));
+}
+
+/**
  * Excerpt Length
  */
 function missiongranted_excerpt_length($length) {
@@ -444,3 +564,128 @@ function missiongranted_excerpt_more($more) {
     return '...';
 }
 add_filter('excerpt_more', 'missiongranted_excerpt_more');
+
+/**
+ * AJAX Contact Form Handler
+ */
+function missiongranted_handle_contact_form() {
+    // Verify nonce
+    check_ajax_referer('missiongranted-nonce', 'nonce');
+    
+    // Sanitize inputs
+    $name = sanitize_text_field($_POST['name'] ?? '');
+    $email = sanitize_email($_POST['email'] ?? '');
+    $subject = sanitize_text_field($_POST['subject'] ?? '');
+    $message = sanitize_textarea_field($_POST['message'] ?? '');
+    
+    // Validate
+    $errors = array();
+    
+    if (empty($name)) {
+        $errors['name'] = 'Name is required';
+    }
+    
+    if (empty($email) || !is_email($email)) {
+        $errors['email'] = 'Valid email is required';
+    }
+    
+    if (empty($subject)) {
+        $errors['subject'] = 'Subject is required';
+    }
+    
+    if (empty($message)) {
+        $errors['message'] = 'Message is required';
+    }
+    
+    // Return errors if any
+    if (!empty($errors)) {
+        wp_send_json_error(array(
+            'message' => 'Please correct the errors below',
+            'errors' => $errors
+        ));
+    }
+    
+    // Fire action hook for HubSpot or other integrations to handle
+    do_action('missiongranted_contact_form_submitted', array(
+        'name' => $name,
+        'email' => $email,
+        'subject' => $subject,
+        'message' => $message
+    ));
+    
+    wp_send_json_success(array(
+        'message' => 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.'
+    ));
+}
+add_action('wp_ajax_contact_form', 'missiongranted_handle_contact_form');
+add_action('wp_ajax_nopriv_contact_form', 'missiongranted_handle_contact_form');
+
+/**
+ * AJAX Demo Request Handler
+ */
+function missiongranted_handle_demo_request() {
+    // Verify nonce
+    check_ajax_referer('missiongranted-nonce', 'nonce');
+    
+    // Sanitize inputs
+    $name = sanitize_text_field($_POST['name'] ?? '');
+    $email = sanitize_email($_POST['email'] ?? '');
+    $organization = sanitize_text_field($_POST['organization'] ?? '');
+    $phone = sanitize_text_field($_POST['phone'] ?? '');
+    
+    // Validate
+    $errors = array();
+    
+    if (empty($name)) {
+        $errors['name'] = 'Name is required';
+    }
+    
+    if (empty($email) || !is_email($email)) {
+        $errors['email'] = 'Valid email is required';
+    }
+    
+    if (empty($organization)) {
+        $errors['organization'] = 'Organization is required';
+    }
+    
+    // Return errors if any
+    if (!empty($errors)) {
+        wp_send_json_error(array(
+            'message' => 'Please correct the errors below',
+            'errors' => $errors
+        ));
+    }
+    
+    // Prepare email
+    $to = get_option('admin_email');
+    $subject = '[' . get_bloginfo('name') . '] New Demo Request';
+    $message = "Name: $name\n";
+    $message .= "Email: $email\n";
+    $message .= "Organization: $organization\n";
+    if (!empty($phone)) {
+        $message .= "Phone: $phone\n";
+    }
+    
+    $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: ' . get_bloginfo('name') . ' <' . get_option('admin_email') . '>',
+        'Reply-To: ' . $name . ' <' . $email . '>'
+    );
+    
+    // Send email
+    $sent = wp_mail($to, $subject, $message, $headers);
+    
+    if ($sent) {
+        // Hook for HubSpot integration
+        do_action('missiongranted_demo_request_submitted', array(
+       Fire action hook for HubSpot or other integrations to handle
+    do_action('missiongranted_demo_request_submitted', array(
+        'name' => $name,
+        'email' => $email,
+        'organization' => $organization,
+        'phone' => $phone
+    ));
+    
+    wp_send_json_success(array(
+        'message' => 'Thank you! We\'ll contact you shortly to schedule your demo.'
+    ));

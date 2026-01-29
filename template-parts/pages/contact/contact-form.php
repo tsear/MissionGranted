@@ -30,21 +30,21 @@
                 </div>
             </div>
             <div class="contact-section__form">
-                <form class="contact-form" method="post">
-                    <div class="contact-form__field">
-                        <label for="contact-name">Name</label>
+                <form class="contact-form" id="contact-form" data-ajax-form="contact">
+                    <div class="form-field">
+                        <label for="contact-name">Name <span class="required">*</span></label>
                         <input type="text" id="contact-name" name="name" required>
                     </div>
-                    <div class="contact-form__field">
-                        <label for="contact-email">Email</label>
+                    <div class="form-field">
+                        <label for="contact-email">Email <span class="required">*</span></label>
                         <input type="email" id="contact-email" name="email" required>
                     </div>
-                    <div class="contact-form__field">
-                        <label for="contact-subject">Subject</label>
+                    <div class="form-field">
+                        <label for="contact-subject">Subject <span class="required">*</span></label>
                         <input type="text" id="contact-subject" name="subject" required>
                     </div>
-                    <div class="contact-form__field">
-                        <label for="contact-message">Message</label>
+                    <div class="form-field">
+                        <label for="contact-message">Message <span class="required">*</span></label>
                         <textarea id="contact-message" name="message" rows="6" required></textarea>
                     </div>
                     <button type="submit" class="btn btn--primary btn--full">Send Message</button>

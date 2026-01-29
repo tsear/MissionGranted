@@ -12,6 +12,15 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+    
+    <?php
+    // Open Graph and Twitter Card Meta Tags
+    // Note: RankMath will override these if configured
+    if (!function_exists('rank_math_the_breadcrumbs')) {
+        missiongranted_social_meta_tags();
+    }
+    ?>
+    
     <?php wp_head(); ?>
 </head>
 

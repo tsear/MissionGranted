@@ -17,6 +17,9 @@ get_header();
                 the_post();
                 get_template_part('template-parts/content', get_post_type());
 
+                // Social Sharing Buttons
+                get_template_part('template-parts/social-sharing');
+
                 // Post navigation
                 the_post_navigation(array(
                     'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous:', 'missiongranted') . '</span> <span class="nav-title">%title</span>',

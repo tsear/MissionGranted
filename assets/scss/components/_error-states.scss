@@ -1,0 +1,389 @@
+// ============================================================================
+// ERROR STATES & VALIDATION
+// ============================================================================
+
+// Form Error Messages
+.form-error {
+  display: block;
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  animation: slideDown 0.3s ease;
+}
+
+.form-success {
+  display: block;
+  color: #059669;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Input Error State
+input,
+textarea,
+select {
+  &.error,
+  &.invalid,
+  &:invalid:not(:placeholder-shown) {
+    border-color: #dc2626;
+    
+    &:focus {
+      outline-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+  }
+  
+  &.success,
+  &.valid {
+    border-color: #059669;
+    
+    &:focus {
+      outline-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    }
+  }
+}
+
+// Field Wrapper with Error
+.form-field {
+  margin-bottom: 1.5rem;
+  
+  &.has-error {
+    label {
+      color: #dc2626;
+    }
+  }
+  
+  &.has-success {
+    label {
+      color: #059669;
+    }
+  }
+}
+
+// Error Alert/Notice
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  animation: fadeIn 0.3s ease;
+  
+  &--error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+  }
+  
+  &--warning {
+    background: #fffbeb;
+    border: 1px solid #fed7aa;
+    color: #92400e;
+  }
+  
+  &--success {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+  }
+  
+  &--info {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+  }
+  
+  &__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+  }
+  
+  &__content {
+    flex: 1;
+  }
+  
+  &__title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  
+  &__message {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  &__close {
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: currentColor;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Empty State
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  
+  &__icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    opacity: 0.3;
+  }
+  
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+  }
+  
+  &__message {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  &__action {
+    margin-top: 1.5rem;
+  }
+}
+
+// 404 Error Page
+.error-404 {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  
+  &__content {
+    max-width: 600px;
+  }
+  
+  &__code {
+    font-size: 6rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--color-primary, #0066cc), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+  
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+  
+  &__message {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  &__search {
+    max-width: 400px;
+    margin: 2rem auto;
+  }
+  
+  &__links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+}
+
+// Broken Image Fallback
+img {
+  &[alt] {
+    // Style for when image fails to load
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #f3f4f6;
+    }
+    
+    &::after {
+      content: '📷 ' attr(alt);
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.875rem;
+      padding: 1rem;
+      max-width: 90%;
+    }
+  }
+}
+
+.image-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  color: #6b7280;
+  min-height: 200px;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2rem;
+  
+  &__icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.3;
+  }
+  
+  &__text {
+    font-size: 0.875rem;
+  }
+}
+
+// Network Error State
+.network-error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #dc2626;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  z-index: 10000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  
+  &.active {
+    transform: translateY(0);
+  }
+  
+  &__message {
+    font-weight: 500;
+  }
+  
+  &__retry {
+    background: white;
+    color: #dc2626;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Validation Checkmark/Error Icon
+.validation-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  
+  &--success {
+    color: #059669;
+  }
+  
+  &--error {
+    color: #dc2626;
+  }
+}
+
+// Required Field Indicator
+.required {
+  color: #dc2626;
+  margin-left: 0.25rem;
+}
+
+// Tooltip for Errors
+.error-tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
+  background: #1f2937;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 100;
+  animation: tooltipFadeIn 0.2s ease;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    border: 6px solid transparent;
+    border-top-color: #1f2937;
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
