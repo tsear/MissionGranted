@@ -1,0 +1,251 @@
+// ============================================
+// Customers Page Styles
+// ============================================
+
+.customers-page {
+  background: var(--color-background, #fff);
+}
+
+// Hero Section
+.customers-hero {
+  padding: $spacing-5xl 0 $spacing-4xl;
+  text-align: center;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  color: $color-white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: clamp($font-size-4xl, 5vw, $font-size-6xl);
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-lg;
+    line-height: $line-height-tight;
+  }
+
+  &__subtitle {
+    font-size: clamp($font-size-lg, 2vw, $font-size-2xl);
+    margin-bottom: $spacing-2xl;
+    opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__cta {
+    font-size: $font-size-lg;
+    padding: $spacing-lg $spacing-2xl;
+    box-shadow: $shadow-lg;
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-xl;
+    }
+  }
+}
+
+// Resources Section
+.customers-resources {
+  padding: $spacing-4xl 0;
+  background: $color-light;
+
+  &__title {
+    text-align: center;
+    font-size: clamp($font-size-3xl, 4vw, $font-size-5xl);
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-3xl;
+    color: $color-text;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-xl;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__card {
+    background: $color-white;
+    padding: $spacing-xl;
+    border-radius: $border-radius;
+    box-shadow: $shadow-md;
+    transition: transform $transition-base, box-shadow $transition-base;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+  }
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: $spacing-lg;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($color-primary, 0.1);
+    border-radius: $border-radius;
+  }
+
+  &__card-title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-md;
+    color: $color-text;
+  }
+
+  &__card-description {
+    color: $color-text-muted;
+    margin-bottom: $spacing-lg;
+    line-height: $line-height-relaxed;
+    flex-grow: 1;
+  }
+
+  &__card-link {
+    color: $color-primary;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+}
+
+// Quick Links Section
+.customers-quick-links {
+  padding: $spacing-4xl 0;
+  background: $color-white;
+
+  &__title {
+    text-align: center;
+    font-size: clamp($font-size-3xl, 3vw, $font-size-4xl);
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-2xl;
+    color: $color-text;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-lg $spacing-xl;
+    background: $color-light;
+    border-radius: $border-radius;
+    text-decoration: none;
+    color: $color-text;
+    font-weight: $font-weight-medium;
+    transition: all $transition-base;
+    border: 2px solid transparent;
+
+    span {
+      flex-grow: 1;
+    }
+
+    svg {
+      flex-shrink: 0;
+      margin-left: $spacing-md;
+      transition: transform $transition-base;
+      color: $color-primary;
+    }
+
+    &:hover {
+      background: $color-white;
+      border-color: $color-primary;
+      transform: translateX(4px);
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+// CTA Banner
+.customers-cta {
+  padding: $spacing-4xl 0;
+  background: linear-gradient(135deg, $color-dark 0%, $color-gray-dark 100%);
+  color: $color-white;
+  text-align: center;
+
+  &__title {
+    font-size: clamp($font-size-3xl, 4vw, $font-size-5xl);
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__description {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-xl;
+    opacity: 0.9;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-md) {
+  .customers-hero {
+    padding: $spacing-4xl 0 $spacing-3xl;
+
+    &__cta {
+      padding: $spacing-md $spacing-xl;
+      font-size: $font-size-base;
+    }
+  }
+
+  .customers-resources {
+    padding: $spacing-3xl 0;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__card {
+      padding: $spacing-xl;
+    }
+  }
+
+  .customers-quick-links {
+    padding: $spacing-2xl 0;
+
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .customers-cta {
+    padding: $spacing-3xl 0;
+  }
+}

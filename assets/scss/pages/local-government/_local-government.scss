@@ -1,0 +1,39 @@
+// ============================================
+// Local Government Page Styles
+// ============================================
+
+.local-government-page {
+  background: $color-white;
+}
+
+// Enhanced hover effects for cards
+.local-government-page {
+  .shadow-sm {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      box-shadow: 0 20px 25px -5px rgba($color-dark, 0.1), 0 10px 10px -5px rgba($color-dark, 0.04);
+      transform: translateY(-4px);
+    }
+  }
+
+  // Agency tags styling
+  .bg-blue-100 {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: linear-gradient(135deg, rgba($color-primary, 0.2) 0%, rgba($color-primary-light, 0.3) 100%) !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  // Button enhancements
+  .btn {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba($color-primary, 0.3);
+    }
+  }
+}

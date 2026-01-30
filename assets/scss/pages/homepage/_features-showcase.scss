@@ -2,7 +2,7 @@
 // Features Showcase Section
 // ============================================
 
-.features-showcase-section {
+.homepage-features-showcase {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background-color: $color-white;
 
@@ -25,10 +25,10 @@
 
     &--reverse {
       @include respond-to('lg') {
-        .features-showcase-section__content {
+        .homepage-features-showcase__content {
           order: 2;
         }
-        .features-showcase-section__visual {
+        .homepage-features-showcase__visual {
           order: 1;
         }
       }

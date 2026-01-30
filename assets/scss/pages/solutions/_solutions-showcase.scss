@@ -1,8 +1,8 @@
 // ============================================
-// Features Showcase Section
+// Solutions Showcase Section
 // ============================================
 
-.features-showcase-section {
+.solutions-solutions-showcase {
   padding: clamp(4rem, 8vw, 6rem) 0;
   background-color: $color-white;
 
@@ -25,10 +25,10 @@
 
     &--reverse {
       @include respond-to('lg') {
-        .features-showcase-section__content {
+        .solutions-solutions-showcase__content {
           order: 2;
         }
-        .features-showcase-section__visual {
+        .solutions-solutions-showcase__visual {
           order: 1;
         }
       }

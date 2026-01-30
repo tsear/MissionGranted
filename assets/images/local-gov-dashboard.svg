@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <!-- Background -->
+  <rect width="800" height="600" rx="16" fill="#F8FAFC"/>
+  
+  <!-- Dashboard Header -->
+  <rect x="40" y="40" width="720" height="60" rx="8" fill="#1E40AF"/>
+  <text x="70" y="78" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="white">MissionGranted</text>
+  <text x="250" y="78" font-family="system-ui, sans-serif" font-size="14" fill="#93C5FD">Grant Portfolio Dashboard</text>
+  
+  <!-- Sidebar -->
+  <rect x="40" y="120" width="180" height="440" rx="8" fill="#EFF6FF"/>
+  <rect x="56" y="140" width="148" height="36" rx="6" fill="#3B82F6"/>
+  <text x="90" y="164" font-family="system-ui, sans-serif" font-size="12" fill="white">Dashboard</text>
+  <text x="70" y="204" font-family="system-ui, sans-serif" font-size="12" fill="#64748B">Grants</text>
+  <text x="70" y="236" font-family="system-ui, sans-serif" font-size="12" fill="#64748B">Budgets</text>
+  <text x="70" y="268" font-family="system-ui, sans-serif" font-size="12" fill="#64748B">Reports</text>
+  <text x="70" y="300" font-family="system-ui, sans-serif" font-size="12" fill="#64748B">Compliance</text>
+  <text x="70" y="332" font-family="system-ui, sans-serif" font-size="12" fill="#64748B">Departments</text>
+  
+  <!-- Main Content Area -->
+  <!-- Stats Cards Row -->
+  <rect x="240" y="120" width="165" height="90" rx="8" fill="white" stroke="#E2E8F0"/>
+  <text x="260" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Active Grants</text>
+  <text x="260" y="185" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#1E40AF">47</text>
+  
+  <rect x="420" y="120" width="165" height="90" rx="8" fill="white" stroke="#E2E8F0"/>
+  <text x="440" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Total Funding</text>
+  <text x="440" y="185" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#059669">$12.4M</text>
+  
+  <rect x="600" y="120" width="160" height="90" rx="8" fill="white" stroke="#E2E8F0"/>
+  <text x="620" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Compliance</text>
+  <text x="620" y="185" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#059669">98%</text>
+  
+  <!-- Chart Area -->
+  <rect x="240" y="230" width="340" height="200" rx="8" fill="white" stroke="#E2E8F0"/>
+  <text x="260" y="260" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1E293B">Budget vs. Expenditure by Department</text>
+  
+  <!-- Bar Chart -->
+  <rect x="280" y="290" width="40" height="100" rx="4" fill="#DBEAFE"/>
+  <rect x="280" y="340" width="40" height="50" rx="4" fill="#3B82F6"/>
+  <text x="290" y="410" font-family="system-ui, sans-serif" font-size="9" fill="#64748B">Police</text>
+  
+  <rect x="340" y="290" width="40" height="100" rx="4" fill="#DBEAFE"/>
+  <rect x="340" y="320" width="40" height="70" rx="4" fill="#3B82F6"/>
+  <text x="352" y="410" font-family="system-ui, sans-serif" font-size="9" fill="#64748B">Fire</text>
+  
+  <rect x="400" y="290" width="40" height="100" rx="4" fill="#DBEAFE"/>
+  <rect x="400" y="300" width="40" height="90" rx="4" fill="#3B82F6"/>
+  <text x="407" y="410" font-family="system-ui, sans-serif" font-size="9" fill="#64748B">Health</text>
+  
+  <rect x="460" y="290" width="40" height="100" rx="4" fill="#DBEAFE"/>
+  <rect x="460" y="350" width="40" height="40" rx="4" fill="#3B82F6"/>
+  <text x="465" y="410" font-family="system-ui, sans-serif" font-size="9" fill="#64748B">Transit</text>
+  
+  <rect x="520" y="290" width="40" height="100" rx="4" fill="#DBEAFE"/>
+  <rect x="520" y="310" width="40" height="80" rx="4" fill="#3B82F6"/>
+  <text x="525" y="410" font-family="system-ui, sans-serif" font-size="9" fill="#64748B">Schools</text>
+  
+  <!-- Grant List -->
+  <rect x="600" y="230" width="160" height="200" rx="8" fill="white" stroke="#E2E8F0"/>
+  <text x="620" y="260" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1E293B">Active Grants</text>
+  
+  <rect x="616" y="280" width="128" height="32" rx="4" fill="#F0FDF4"/>
+  <text x="628" y="300" font-family="system-ui, sans-serif" font-size="10" fill="#166534">FEMA-2024-001</text>
+  
+  <rect x="616" y="320" width="128" height="32" rx="4" fill="#EFF6FF"/>
+  <text x="628" y="340" font-family="system-ui, sans-serif" font-size="10" fill="#1E40AF">HUD-CDBG-23</text>
+  
+  <rect x="616" y="360" width="128" height="32" rx="4" fill="#FEF3C7"/>
+  <text x="628" y="380" font-family="system-ui, sans-serif" font-size="10" fill="#92400E">DOT-INFRA-24</text>
+  
+  <rect x="616" y="400" width="128" height="32" rx="4" fill="#F0FDF4"/>
+  <text x="628" y="420" font-family="system-ui, sans-serif" font-size="10" fill="#166534">EPA-WATER-23</text>
+  
+  <!-- Bottom Cards -->
+  <rect x="240" y="450" width="250" height="110" rx="8" fill="white" stroke="#E2E8F0"/>
+  <text x="260" y="480" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1E293B">Upcoming Deadlines</text>
+  <circle cx="272" cy="508" r="6" fill="#EF4444"/>
+  <text x="286" y="512" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">FEMA Q4 Report - 3 days</text>
+  <circle cx="272" cy="534" r="6" fill="#F59E0B"/>
+  <text x="286" y="538" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">HUD Closeout - 2 weeks</text>
+  
+  <rect x="510" y="450" width="250" height="110" rx="8" fill="white" stroke="#E2E8F0"/>
+  <text x="530" y="480" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1E293B">Compliance Alerts</text>
+  <rect x="530" y="500" width="210" height="40" rx="4" fill="#F0FDF4"/>
+  <text x="546" y="526" font-family="system-ui, sans-serif" font-size="11" fill="#166534">✓ All grants compliant</text>
+</svg>

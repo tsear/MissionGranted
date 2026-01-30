@@ -115,8 +115,12 @@ add_action('widgets_init', 'missiongranted_widgets_init');
  * Enqueue Scripts and Styles
  */
 function missiongranted_scripts() {
+    // Tailwind CSS + Flowbite CDN
+    wp_enqueue_style('tailwind-css', 'https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css', array(), '3.4.1');
+    wp_enqueue_style('flowbite-css', 'https://cdn.jsdelivr.net/npm/flowbite@2.2.1/dist/flowbite.min.css', array(), '2.2.1');
+    
     // Main stylesheet (compiled from SCSS)
-    wp_enqueue_style('missiongranted-style', get_stylesheet_uri(), array(), MISSIONGRANTED_VERSION);
+    wp_enqueue_style('missiongranted-style', get_stylesheet_uri(), array('tailwind-css', 'flowbite-css'), MISSIONGRANTED_VERSION);
     
     // Google Fonts
     wp_enqueue_style('missiongranted-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap', array(), null);
@@ -126,6 +130,9 @@ function missiongranted_scripts() {
         ? '/assets/js/bundle.min.js' 
         : '/assets/js/main.js';
     wp_enqueue_script('missiongranted-main', get_template_directory_uri() . $js_file, array('jquery'), MISSIONGRANTED_VERSION . '.' . filemtime(get_template_directory() . $js_file), true);
+    
+    // Flowbite JS
+    wp_enqueue_script('flowbite-js', 'https://cdn.jsdelivr.net/npm/flowbite@2.2.1/dist/flowbite.min.js', array(), '2.2.1', true);
     
     // Comment reply script
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -656,29 +663,7 @@ function missiongranted_handle_demo_request() {
         ));
     }
     
-    // Prepare email
-    $to = get_option('admin_email');
-    $subject = '[' . get_bloginfo('name') . '] New Demo Request';
-    $message = "Name: $name\n";
-    $message .= "Email: $email\n";
-    $message .= "Organization: $organization\n";
-    if (!empty($phone)) {
-        $message .= "Phone: $phone\n";
-    }
-    
-    $headers = array(
-        'Content-Type: text/plain; charset=UTF-8',
-        'From: ' . get_bloginfo('name') . ' <' . get_option('admin_email') . '>',
-        'Reply-To: ' . $name . ' <' . $email . '>'
-    );
-    
-    // Send email
-    $sent = wp_mail($to, $subject, $message, $headers);
-    
-    if ($sent) {
-        // Hook for HubSpot integration
-        do_action('missiongranted_demo_request_submitted', array(
-       Fire action hook for HubSpot or other integrations to handle
+    // Fire action hook for HubSpot or other integrations to handle
     do_action('missiongranted_demo_request_submitted', array(
         'name' => $name,
         'email' => $email,
@@ -689,3 +674,6 @@ function missiongranted_handle_demo_request() {
     wp_send_json_success(array(
         'message' => 'Thank you! We\'ll contact you shortly to schedule your demo.'
     ));
+}
+add_action('wp_ajax_demo_request', 'missiongranted_handle_demo_request');
+add_action('wp_ajax_nopriv_demo_request', 'missiongranted_handle_demo_request');

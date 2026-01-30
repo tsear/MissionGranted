@@ -12,7 +12,7 @@ get_header();
 <main id="main-content" class="site-main">
     <?php
     get_template_part('template-parts/pages/page-hero');
-    get_template_part('template-parts/pages/contact/contact-form');
+    get_template_part('template-parts/pages/contact/contact-contact-form');
     ?>
 </main>
 

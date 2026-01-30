@@ -1,5 +1,5 @@
-<section class="features-showcase-section">
-    <div class="features-showcase-section__container">
+<section class="solutions-solutions-showcase">
+    <div class="solutions-solutions-showcase__container">
         <?php
         $showcases = array(
             array(
@@ -19,14 +19,14 @@
             )
         );
         foreach ($showcases as $index => $showcase) :
-            $modifier = $showcase['reverse'] ? 'features-showcase-section__row--reverse' : '';
+            $modifier = $showcase['reverse'] ? 'solutions-solutions-showcase__row--reverse' : '';
         ?>
-        <div class="features-showcase-section__row <?php echo $modifier; ?>">
-            <div class="features-showcase-section__content">
-                <h2 class="features-showcase-section__title"><?php echo esc_html($showcase['title']); ?></h2>
-                <p class="features-showcase-section__desc"><?php echo esc_html($showcase['desc']); ?></p>
+        <div class="solutions-solutions-showcase__row <?php echo $modifier; ?>">
+            <div class="solutions-solutions-showcase__content">
+                <h2 class="solutions-solutions-showcase__title"><?php echo esc_html($showcase['title']); ?></h2>
+                <p class="solutions-solutions-showcase__desc"><?php echo esc_html($showcase['desc']); ?></p>
             </div>
-            <div class="features-showcase-section__visual">
+            <div class="solutions-solutions-showcase__visual">
                 <?php if (get_theme_mod("feature_showcase_{$index}_image")) : ?>
                     <img src="<?php echo esc_url(get_theme_mod("feature_showcase_{$index}_image")); ?>" alt="<?php echo esc_attr($showcase['title']); ?>">
                 <?php endif; ?>

@@ -12,9 +12,9 @@ get_header();
 <main id="main-content" class="site-main">
     <?php
     get_template_part('template-parts/pages/page-hero');
-    get_template_part('template-parts/pages/pricing/pricing-cards');
-    get_template_part('template-parts/pages/homepage/testimonials');
-    get_template_part('template-parts/pages/homepage/cta-banner');
+    get_template_part('template-parts/pages/pricing/pricing-pricing-cards');
+    get_template_part('template-parts/pages/homepage/homepage-testimonials');
+    get_template_part('template-parts/pages/homepage/homepage-cta-banner');
     ?>
 </main>
 

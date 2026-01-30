@@ -1,14 +1,14 @@
-<section class="features-grid-section">
-    <div class="features-grid-section__container">
-        <div class="features-grid-section__header">
-            <h2 class="features-grid-section__title">
+<section class="solutions-solutions-grid">
+    <div class="solutions-solutions-grid__container">
+        <div class="solutions-solutions-grid__header">
+            <h2 class="solutions-solutions-grid__title">
                 <?php echo esc_html(get_theme_mod('features_title', 'Everything You Need to Win Grants')); ?>
             </h2>
-            <p class="features-grid-section__subtitle">
+            <p class="solutions-solutions-grid__subtitle">
                 <?php echo esc_html(get_theme_mod('features_subtitle', 'Powerful tools designed specifically for nonprofits')); ?>
             </p>
         </div>
-        <div class="features-grid-section__grid">
+        <div class="solutions-solutions-grid__grid">
             <?php
             $features = array(
                 array('icon' => '🔍', 'title' => 'Grant Discovery', 'desc' => 'AI-powered matching with 10,000+ grants'),
@@ -20,10 +20,10 @@
             );
             foreach ($features as $feature) :
             ?>
-            <div class="features-grid-section__item">
-                <div class="features-grid-section__icon"><?php echo $feature['icon']; ?></div>
-                <h3 class="features-grid-section__item-title"><?php echo esc_html($feature['title']); ?></h3>
-                <p class="features-grid-section__item-desc"><?php echo esc_html($feature['desc']); ?></p>
+            <div class="solutions-solutions-grid__item">
+                <div class="solutions-solutions-grid__icon"><?php echo $feature['icon']; ?></div>
+                <h3 class="solutions-solutions-grid__item-title"><?php echo esc_html($feature['title']); ?></h3>
+                <p class="solutions-solutions-grid__item-desc"><?php echo esc_html($feature['desc']); ?></p>
             </div>
             <?php endforeach; ?>
         </div>
