@@ -102,6 +102,8 @@
                 <a href="/solutions" class="btn btn--outline btn--lg ml-4">Learn More</a>
             </div>
         </div>
-        <img class="w-full rounded-lg shadow-xl mt-8 md:mt-0" src="<?php echo get_template_directory_uri(); ?>/assets/images/local-gov-workflow.svg" alt="Grant management workflow">
+        <div class="hidden md:flex items-center justify-center">
+            <!-- Image placeholder removed - image will be added later -->
+        </div>
     </div>
 </section>

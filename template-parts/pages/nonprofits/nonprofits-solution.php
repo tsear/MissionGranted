@@ -1,6 +1,8 @@
 <section class="bg-white dark:bg-gray-900">
     <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-        <img class="w-full" src="<?php echo get_template_directory_uri(); ?>/assets/images/nonprofit-dashboard.svg" alt="MissionGranted dashboard">
+        <div class="hidden md:flex items-center justify-center">
+            <!-- Image placeholder - will be added later -->
+        </div>
         <div class="mt-4 md:mt-0">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">One System. Complete Control.</h2>
             <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">MissionGranted centralizes grant financial management into a single cloud platform purpose-built for nonprofits. No more spreadsheets, data silos, or compliance guesswork.</p>

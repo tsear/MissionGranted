@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/nonprofit-hero.svg" alt="Nonprofit grant management illustration">
+            <!-- Image placeholder - will be added later -->
         </div>                
     </div>
 </section>

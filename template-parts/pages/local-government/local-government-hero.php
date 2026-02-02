@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/government-hero.svg" alt="Local government grant management">
+            <!-- Image placeholder - will be added later -->
         </div>                
     </div>
 </section>

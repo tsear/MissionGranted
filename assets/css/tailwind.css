@@ -1,0 +1,40 @@
+/**
+ * Tailwind CSS Entry Point
+ * This file is processed by Tailwind to generate the final CSS
+ */
+
+@import "tailwindcss";
+
+/* Custom theme extensions for brand colors */
+@theme {
+  /* Brand Colors */
+  --color-primary: #0066CC;
+  --color-primary-dark: #004C99;
+  --color-primary-light: #3385D6;
+  
+  --color-secondary: #00C896;
+  --color-secondary-dark: #00A378;
+  --color-secondary-light: #33D4AB;
+  
+  --color-brand-pink: #d81259;
+  --color-brand-yellow: #FFBC41;
+  --color-brand-blue: #016BA6;
+  
+  --color-dark: #1A1A1A;
+  --color-text: #1A1A1A;
+  --color-text-muted: #7A7A7A;
+  --color-gray-dark: #4A4A4A;
+  --color-gray: #7A7A7A;
+  --color-gray-light: #E5E5E5;
+  
+  --color-success: #28A745;
+  --color-warning: #FFC107;
+  --color-error: #DC3545;
+  --color-info: #17A2B8;
+  
+  /* Font Families */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-heading: 'Poppins', var(--font-sans);
+  --font-mono: 'Monaco', 'Courier New', monospace;
+}
+

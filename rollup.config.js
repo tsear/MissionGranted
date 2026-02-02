@@ -7,52 +7,78 @@ import postcss from 'rollup-plugin-postcss';
 
 const production = !process.env.ROLLUP_WATCH;
 
-export default {
-  input: 'assets/js/main.js',
-  output: {
-    file: 'assets/js/bundle.min.js',
-    format: 'iife',
-    sourcemap: !production,
-    name: 'MissionGranted',
-    globals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
+// Shared plugin configuration
+const sharedPlugins = [
+  postcss({
+    extract: false,
+    minimize: production,
+    inject: true
+  }),
+  replace({
+    'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development'),
+    preventAssignment: true
+  }),
+  resolve({
+    browser: true,
+    extensions: ['.js', '.jsx']
+  }),
+  babel({
+    babelHelpers: 'bundled',
+    exclude: 'node_modules/**',
+    presets: [
+      ['@babel/preset-env', { targets: { browsers: ['> 0.25%', 'not dead'] } }],
+      ['@babel/preset-react', { runtime: 'automatic' }]
+    ],
+    extensions: ['.js', '.jsx']
+  }),
+  commonjs(),
+  production && terser({
+    format: {
+      comments: false
+    },
+    compress: {
+      drop_console: true
+    }
+  })
+];
+
+// Export multiple bundles
+export default [
+  // CardNav Bundle - Loaded on ALL pages
+  {
+    input: 'assets/js/cardnav-main.js',
+    output: {
+      file: 'assets/js/bundle-cardnav.min.js',
+      format: 'iife',
+      sourcemap: !production,
+      name: 'MissionGrantedNav',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM'
+      }
+    },
+    plugins: sharedPlugins,
+    watch: {
+      clearScreen: false
     }
   },
-  plugins: [
-    postcss({
-      extract: false,
-      minimize: production,
-      inject: true
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development'),
-      preventAssignment: true
-    }),
-    resolve({
-      browser: true,
-      extensions: ['.js', '.jsx']
-    }),
-    babel({
-      babelHelpers: 'bundled',
-      exclude: 'node_modules/**',
-      presets: [
-        ['@babel/preset-env', { targets: { browsers: ['> 0.25%', 'not dead'] } }],
-        ['@babel/preset-react', { runtime: 'automatic' }]
-      ],
-      extensions: ['.js', '.jsx']
-    }),
-    commonjs(),
-    production && terser({
-      format: {
-        comments: false
-      },
-      compress: {
-        drop_console: true
+  
+  // Homepage Bundle - Loaded ONLY on homepage
+  {
+    input: 'assets/js/homepage-main.js',
+    output: {
+      file: 'assets/js/bundle-homepage.min.js',
+      format: 'iife',
+      sourcemap: !production,
+      name: 'MissionGrantedHome',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM'
       }
-    })
-  ],
-  watch: {
-    clearScreen: false
+    },
+    plugins: sharedPlugins,
+    watch: {
+      clearScreen: false
+    }
   }
-};
+];

@@ -115,21 +115,43 @@ add_action('widgets_init', 'missiongranted_widgets_init');
  * Enqueue Scripts and Styles
  */
 function missiongranted_scripts() {
-    // Tailwind CSS + Flowbite CDN
-    wp_enqueue_style('tailwind-css', 'https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css', array(), '3.4.1');
+    // Bundled Tailwind CSS (replaces CDN)
+    wp_enqueue_style('missiongranted-tailwind', get_template_directory_uri() . '/assets/css/tailwind.min.css', array(), MISSIONGRANTED_VERSION);
+    
+    // Flowbite CSS (keeping CDN for now, can bundle later if needed)
     wp_enqueue_style('flowbite-css', 'https://cdn.jsdelivr.net/npm/flowbite@2.2.1/dist/flowbite.min.css', array(), '2.2.1');
     
-    // Main stylesheet (compiled from SCSS)
-    wp_enqueue_style('missiongranted-style', get_stylesheet_uri(), array('tailwind-css', 'flowbite-css'), MISSIONGRANTED_VERSION);
+    // Main stylesheet (compiled from SCSS - custom components and legacy styles)
+    wp_enqueue_style('missiongranted-style', get_stylesheet_uri(), array('missiongranted-tailwind', 'flowbite-css'), MISSIONGRANTED_VERSION);
     
     // Google Fonts
     wp_enqueue_style('missiongranted-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap', array(), null);
     
-    // Main JavaScript file (bundled)
-    $js_file = file_exists(get_template_directory() . '/assets/js/bundle.min.js') 
-        ? '/assets/js/bundle.min.js' 
-        : '/assets/js/main.js';
-    wp_enqueue_script('missiongranted-main', get_template_directory_uri() . $js_file, array('jquery'), MISSIONGRANTED_VERSION . '.' . filemtime(get_template_directory() . $js_file), true);
+    // CardNav Bundle - Loaded on ALL pages for global navigation
+    $cardnav_file = get_template_directory() . '/assets/js/bundle-cardnav.min.js';
+    if (file_exists($cardnav_file)) {
+        wp_enqueue_script(
+            'missiongranted-cardnav', 
+            get_template_directory_uri() . '/assets/js/bundle-cardnav.min.js', 
+            array(), 
+            MISSIONGRANTED_VERSION . '.' . filemtime($cardnav_file), 
+            true
+        );
+    }
+    
+    // Homepage Bundle - Loaded ONLY on homepage template
+    if (is_page_template('template-home.php')) {
+        $homepage_file = get_template_directory() . '/assets/js/bundle-homepage.min.js';
+        if (file_exists($homepage_file)) {
+            wp_enqueue_script(
+                'missiongranted-homepage', 
+                get_template_directory_uri() . '/assets/js/bundle-homepage.min.js', 
+                array(), 
+                MISSIONGRANTED_VERSION . '.' . filemtime($homepage_file), 
+                true
+            );
+        }
+    }
     
     // Flowbite JS
     wp_enqueue_script('flowbite-js', 'https://cdn.jsdelivr.net/npm/flowbite@2.2.1/dist/flowbite.min.js', array(), '2.2.1', true);
@@ -139,8 +161,8 @@ function missiongranted_scripts() {
         wp_enqueue_script('comment-reply');
     }
     
-    // Localize script for AJAX and theme data
-    wp_localize_script('missiongranted-main', 'missionGrantedData', array(
+    // Localize script for AJAX and theme data (attach to CardNav since it's always loaded)
+    wp_localize_script('missiongranted-cardnav', 'missionGrantedData', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('missiongranted-nonce'),
         'themeUrl' => get_template_directory_uri(),
