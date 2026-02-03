@@ -12,6 +12,7 @@ get_header();
 <main id="main-content" class="site-main support-page">
     <?php
     get_template_part('template-parts/pages/support/support-hero');
+    get_template_part('template-parts/pages/support/support-ticket-form');
     get_template_part('template-parts/pages/support/support-resources');
     get_template_part('template-parts/pages/support/support-community');
     get_template_part('template-parts/pages/support/support-faq');

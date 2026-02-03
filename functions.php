@@ -115,11 +115,11 @@ add_action('widgets_init', 'missiongranted_widgets_init');
  * Enqueue Scripts and Styles
  */
 function missiongranted_scripts() {
-    // Bundled Tailwind CSS (replaces CDN)
+    // Bundled Tailwind CSS
     wp_enqueue_style('missiongranted-tailwind', get_template_directory_uri() . '/assets/css/tailwind.min.css', array(), MISSIONGRANTED_VERSION);
     
-    // Flowbite CSS (keeping CDN for now, can bundle later if needed)
-    wp_enqueue_style('flowbite-css', 'https://cdn.jsdelivr.net/npm/flowbite@2.2.1/dist/flowbite.min.css', array(), '2.2.1');
+    // Bundled Flowbite CSS
+    wp_enqueue_style('flowbite-css', get_template_directory_uri() . '/assets/css/flowbite.min.css', array(), '2.2.1');
     
     // Main stylesheet (compiled from SCSS - custom components and legacy styles)
     wp_enqueue_style('missiongranted-style', get_stylesheet_uri(), array('missiongranted-tailwind', 'flowbite-css'), MISSIONGRANTED_VERSION);
@@ -153,8 +153,8 @@ function missiongranted_scripts() {
         }
     }
     
-    // Flowbite JS
-    wp_enqueue_script('flowbite-js', 'https://cdn.jsdelivr.net/npm/flowbite@2.2.1/dist/flowbite.min.js', array(), '2.2.1', true);
+    // Bundled Flowbite JS
+    wp_enqueue_script('flowbite-js', get_template_directory_uri() . '/assets/js/flowbite.min.js', array(), '2.2.1', true);
     
     // Comment reply script
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -169,232 +169,6 @@ function missiongranted_scripts() {
     ));
 }
 add_action('wp_enqueue_scripts', 'missiongranted_scripts');
-
-/**
- * Custom Post Types
- */
-function missiongranted_register_post_types() {
-    // Testimonials Post Type
-    register_post_type('testimonial', array(
-        'labels' => array(
-            'name'               => esc_html__('Testimonials', 'missiongranted'),
-            'singular_name'      => esc_html__('Testimonial', 'missiongranted'),
-            'add_new'            => esc_html__('Add New', 'missiongranted'),
-            'add_new_item'       => esc_html__('Add New Testimonial', 'missiongranted'),
-            'edit_item'          => esc_html__('Edit Testimonial', 'missiongranted'),
-            'new_item'           => esc_html__('New Testimonial', 'missiongranted'),
-            'view_item'          => esc_html__('View Testimonial', 'missiongranted'),
-            'search_items'       => esc_html__('Search Testimonials', 'missiongranted'),
-            'not_found'          => esc_html__('No testimonials found', 'missiongranted'),
-            'not_found_in_trash' => esc_html__('No testimonials found in Trash', 'missiongranted'),
-        ),
-        'public'       => true,
-        'has_archive'  => true,
-        'menu_icon'    => 'dashicons-format-quote',
-        'supports'     => array('title', 'editor', 'thumbnail'),
-        'rewrite'      => array('slug' => 'testimonials'),
-    ));
-    
-    // Team Members Post Type
-    register_post_type('team', array(
-        'labels' => array(
-            'name'               => esc_html__('Team Members', 'missiongranted'),
-            'singular_name'      => esc_html__('Team Member', 'missiongranted'),
-            'add_new'            => esc_html__('Add New', 'missiongranted'),
-            'add_new_item'       => esc_html__('Add New Team Member', 'missiongranted'),
-            'edit_item'          => esc_html__('Edit Team Member', 'missiongranted'),
-            'new_item'           => esc_html__('New Team Member', 'missiongranted'),
-            'view_item'          => esc_html__('View Team Member', 'missiongranted'),
-            'search_items'       => esc_html__('Search Team', 'missiongranted'),
-            'not_found'          => esc_html__('No team members found', 'missiongranted'),
-            'not_found_in_trash' => esc_html__('No team members found in Trash', 'missiongranted'),
-        ),
-        'public'       => true,
-        'has_archive'  => true,
-        'menu_icon'    => 'dashicons-groups',
-        'supports'     => array('title', 'editor', 'thumbnail'),
-        'rewrite'      => array('slug' => 'team'),
-    ));
-    
-    // Case Studies Post Type
-    register_post_type('case_study', array(
-        'labels' => array(
-            'name'               => esc_html__('Case Studies', 'missiongranted'),
-            'singular_name'      => esc_html__('Case Study', 'missiongranted'),
-            'add_new'            => esc_html__('Add New', 'missiongranted'),
-            'add_new_item'       => esc_html__('Add New Case Study', 'missiongranted'),
-            'edit_item'          => esc_html__('Edit Case Study', 'missiongranted'),
-            'new_item'           => esc_html__('New Case Study', 'missiongranted'),
-            'view_item'          => esc_html__('View Case Study', 'missiongranted'),
-            'search_items'       => esc_html__('Search Case Studies', 'missiongranted'),
-            'not_found'          => esc_html__('No case studies found', 'missiongranted'),
-            'not_found_in_trash' => esc_html__('No case studies found in Trash', 'missiongranted'),
-        ),
-        'public'       => true,
-        'has_archive'  => true,
-        'menu_icon'    => 'dashicons-portfolio',
-        'supports'     => array('title', 'editor', 'thumbnail', 'excerpt'),
-        'rewrite'      => array('slug' => 'case-studies'),
-    ));
-}
-add_action('init', 'missiongranted_register_post_types');
-
-/**
- * Custom Meta Boxes
- */
-function missiongranted_add_meta_boxes() {
-    // Testimonial Meta Box
-    add_meta_box(
-        'testimonial_details',
-        esc_html__('Testimonial Details', 'missiongranted'),
-        'missiongranted_testimonial_meta_box',
-        'testimonial',
-        'normal',
-        'high'
-    );
-    
-    // Team Member Meta Box
-    add_meta_box(
-        'team_details',
-        esc_html__('Team Member Details', 'missiongranted'),
-        'missiongranted_team_meta_box',
-        'team',
-        'normal',
-        'high'
-    );
-    
-    // Case Study Meta Box
-    add_meta_box(
-        'case_study_details',
-        esc_html__('Case Study Details', 'missiongranted'),
-        'missiongranted_case_study_meta_box',
-        'case_study',
-        'normal',
-        'high'
-    );
-}
-add_action('add_meta_boxes', 'missiongranted_add_meta_boxes');
-
-/**
- * Testimonial Meta Box Callback
- */
-function missiongranted_testimonial_meta_box($post) {
-    wp_nonce_field('missiongranted_testimonial_meta', 'missiongranted_testimonial_nonce');
-    $author = get_post_meta($post->ID, '_testimonial_author', true);
-    $company = get_post_meta($post->ID, '_testimonial_company', true);
-    $rating = get_post_meta($post->ID, '_testimonial_rating', true);
-    ?>
-    <p>
-        <label for="testimonial_author"><?php esc_html_e('Author Name:', 'missiongranted'); ?></label><br>
-        <input type="text" id="testimonial_author" name="testimonial_author" value="<?php echo esc_attr($author); ?>" class="widefat">
-    </p>
-    <p>
-        <label for="testimonial_company"><?php esc_html_e('Company/Organization:', 'missiongranted'); ?></label><br>
-        <input type="text" id="testimonial_company" name="testimonial_company" value="<?php echo esc_attr($company); ?>" class="widefat">
-    </p>
-    <p>
-        <label for="testimonial_rating"><?php esc_html_e('Rating (1-5):', 'missiongranted'); ?></label><br>
-        <select id="testimonial_rating" name="testimonial_rating">
-            <?php for ($i = 1; $i <= 5; $i++) : ?>
-                <option value="<?php echo $i; ?>" <?php selected($rating, $i); ?>><?php echo $i; ?> Star<?php echo $i > 1 ? 's' : ''; ?></option>
-            <?php endfor; ?>
-        </select>
-    </p>
-    <?php
-}
-
-/**
- * Team Member Meta Box Callback
- */
-function missiongranted_team_meta_box($post) {
-    wp_nonce_field('missiongranted_team_meta', 'missiongranted_team_nonce');
-    $position = get_post_meta($post->ID, '_team_position', true);
-    $email = get_post_meta($post->ID, '_team_email', true);
-    $linkedin = get_post_meta($post->ID, '_team_linkedin', true);
-    ?>
-    <p>
-        <label for="team_position"><?php esc_html_e('Position/Title:', 'missiongranted'); ?></label><br>
-        <input type="text" id="team_position" name="team_position" value="<?php echo esc_attr($position); ?>" class="widefat">
-    </p>
-    <p>
-        <label for="team_email"><?php esc_html_e('Email:', 'missiongranted'); ?></label><br>
-        <input type="email" id="team_email" name="team_email" value="<?php echo esc_attr($email); ?>" class="widefat">
-    </p>
-    <p>
-        <label for="team_linkedin"><?php esc_html_e('LinkedIn URL:', 'missiongranted'); ?></label><br>
-        <input type="url" id="team_linkedin" name="team_linkedin" value="<?php echo esc_attr($linkedin); ?>" class="widefat">
-    </p>
-    <?php
-}
-
-/**
- * Case Study Meta Box Callback
- */
-function missiongranted_case_study_meta_box($post) {
-    wp_nonce_field('missiongranted_case_study_meta', 'missiongranted_case_study_nonce');
-    $client = get_post_meta($post->ID, '_case_study_client', true);
-    $industry = get_post_meta($post->ID, '_case_study_industry', true);
-    $results = get_post_meta($post->ID, '_case_study_results', true);
-    ?>
-    <p>
-        <label for="case_study_client"><?php esc_html_e('Client Name:', 'missiongranted'); ?></label><br>
-        <input type="text" id="case_study_client" name="case_study_client" value="<?php echo esc_attr($client); ?>" class="widefat">
-    </p>
-    <p>
-        <label for="case_study_industry"><?php esc_html_e('Industry:', 'missiongranted'); ?></label><br>
-        <input type="text" id="case_study_industry" name="case_study_industry" value="<?php echo esc_attr($industry); ?>" class="widefat">
-    </p>
-    <p>
-        <label for="case_study_results"><?php esc_html_e('Key Results:', 'missiongranted'); ?></label><br>
-        <textarea id="case_study_results" name="case_study_results" rows="4" class="widefat"><?php echo esc_textarea($results); ?></textarea>
-    </p>
-    <?php
-}
-
-/**
- * Save Meta Box Data
- */
-function missiongranted_save_meta_boxes($post_id) {
-    // Testimonials
-    if (isset($_POST['missiongranted_testimonial_nonce']) && wp_verify_nonce($_POST['missiongranted_testimonial_nonce'], 'missiongranted_testimonial_meta')) {
-        if (isset($_POST['testimonial_author'])) {
-            update_post_meta($post_id, '_testimonial_author', sanitize_text_field($_POST['testimonial_author']));
-        }
-        if (isset($_POST['testimonial_company'])) {
-            update_post_meta($post_id, '_testimonial_company', sanitize_text_field($_POST['testimonial_company']));
-        }
-        if (isset($_POST['testimonial_rating'])) {
-            update_post_meta($post_id, '_testimonial_rating', absint($_POST['testimonial_rating']));
-        }
-    }
-    
-    // Team Members
-    if (isset($_POST['missiongranted_team_nonce']) && wp_verify_nonce($_POST['missiongranted_team_nonce'], 'missiongranted_team_meta')) {
-        if (isset($_POST['team_position'])) {
-            update_post_meta($post_id, '_team_position', sanitize_text_field($_POST['team_position']));
-        }
-        if (isset($_POST['team_email'])) {
-            update_post_meta($post_id, '_team_email', sanitize_email($_POST['team_email']));
-        }
-        if (isset($_POST['team_linkedin'])) {
-            update_post_meta($post_id, '_team_linkedin', esc_url_raw($_POST['team_linkedin']));
-        }
-    }
-    
-    // Case Studies
-    if (isset($_POST['missiongranted_case_study_nonce']) && wp_verify_nonce($_POST['missiongranted_case_study_nonce'], 'missiongranted_case_study_meta')) {
-        if (isset($_POST['case_study_client'])) {
-            update_post_meta($post_id, '_case_study_client', sanitize_text_field($_POST['case_study_client']));
-        }
-        if (isset($_POST['case_study_industry'])) {
-            update_post_meta($post_id, '_case_study_industry', sanitize_text_field($_POST['case_study_industry']));
-        }
-        if (isset($_POST['case_study_results'])) {
-            update_post_meta($post_id, '_case_study_results', sanitize_textarea_field($_POST['case_study_results']));
-        }
-    }
-}
-add_action('save_post', 'missiongranted_save_meta_boxes');
 
 /**
  * Customizer Options
