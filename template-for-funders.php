@@ -9,11 +9,15 @@
 get_header();
 ?>
 
-<main id="main-content" class="site-main">
-    <div class="container">
-        <h1>For Funders</h1>
-        <!-- Add funder solutions content here -->
-    </div>
+<main id="main-content" class="site-main funders-page">
+    <?php
+    get_template_part('template-parts/pages/funders/funders-hero');
+    get_template_part('template-parts/pages/funders/funders-value-props');
+    get_template_part('template-parts/pages/funders/funders-types');
+    get_template_part('template-parts/pages/funders/funders-cohort-model');
+    get_template_part('template-parts/pages/funders/funders-approach');
+    get_template_part('template-parts/pages/funders/funders-cta');
+    ?>
 </main>
 
 <?php
