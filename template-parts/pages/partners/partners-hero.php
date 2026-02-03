@@ -1,5 +1,5 @@
 <!-- Partners Page Hero -->
-<section class="bg-gradient-to-b from-blue-50 to-white pb-16 md:pb-24">
+<section class="bg-gray-50 pb-16 md:pb-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="padding-top: 120px;">
         <div class="text-center">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6">

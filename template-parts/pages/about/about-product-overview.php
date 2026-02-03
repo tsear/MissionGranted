@@ -1,10 +1,10 @@
 <section class="bg-gray-50">
     <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div class="max-w-screen-md">
+        <div class="max-w-screen-md mx-auto text-center mb-8 lg:mb-16">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">The Problem We Solve</h2>
-            <p class="mb-8 font-light text-gray-500 sm:text-xl">Grant management is stuck in the spreadsheet era. Organizations juggle disconnected tools, struggle with compliance, and waste hours on manual reporting. MissionGranted is the first cloud-native platform that unifies grant tracking, budget management, compliance, and reporting in one system.</p>
+            <p class="font-light text-gray-500 sm:text-xl">Grant management is stuck in the spreadsheet era. Organizations juggle disconnected tools, struggle with compliance, and waste hours on manual reporting. MissionGranted is the first cloud-native platform that unifies grant tracking, budget management, compliance, and reporting in one system.</p>
         </div>
-        <div class="mt-12 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
+        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0">
             <div>
                 <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12">
                     <svg class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -32,6 +32,26 @@
                 </div>
                 <h3 class="mb-2 text-xl font-bold text-gray-900">Real-Time Visibility</h3>
                 <p class="text-gray-500">Live dashboards showing budget status, spending trends, and compliance metrics updated in real time.</p>
+            </div>
+        </div>
+        
+        <!-- Metrics -->
+        <div class="pt-10 mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="p-6 bg-white rounded-xl text-center border border-gray-200">
+                <div class="text-4xl font-extrabold mb-1" style="color: var(--color-brand-blue);">$2B+</div>
+                <div class="text-sm font-semibold text-gray-900">Grants Managed</div>
+            </div>
+            <div class="p-6 bg-white rounded-xl text-center border border-gray-200">
+                <div class="text-4xl font-extrabold mb-1" style="color: var(--color-brand-blue);">100%</div>
+                <div class="text-sm font-semibold text-gray-900">Compliance Rate</div>
+            </div>
+            <div class="p-6 bg-white rounded-xl text-center border border-gray-200">
+                <div class="text-4xl font-extrabold mb-1" style="color: var(--color-brand-blue);">200+</div>
+                <div class="text-sm font-semibold text-gray-900">Organizations</div>
+            </div>
+            <div class="p-6 bg-white rounded-xl text-center border border-gray-200">
+                <div class="text-4xl font-extrabold mb-1" style="color: var(--color-brand-blue);">75%</div>
+                <div class="text-sm font-semibold text-gray-900">Time Saved</div>
             </div>
         </div>
     </div>

@@ -9,9 +9,9 @@
 get_header();
 ?>
 
-<main id="main-content" class="site-main">
+<main id="main-content" class="site-main bg-white">
     <?php
-    get_template_part('template-parts/pages/page-hero');
+    get_template_part('template-parts/pages/contact/contact-hero');
     get_template_part('template-parts/pages/contact/contact-contact-form');
     ?>
 </main>

@@ -11,11 +11,8 @@ get_header(); ?>
     // Hero
     get_template_part('template-parts/pages/about/about-hero');
     
-    // Product Overview
+    // Product Overview (includes metrics)
     get_template_part('template-parts/pages/about/about-product-overview');
-    
-    // Stats
-    get_template_part('template-parts/pages/about/about-platform-capabilities');
     
     // Product Video
     get_template_part('template-parts/pages/about/about-product-video');
